@@ -1,5 +1,9 @@
 import random
 import os
+from colorama import init
+from termcolor import colored
+
+init()
 
 set = ['rock', 'paper', 'scissors']
 
@@ -16,24 +20,32 @@ def player_choose():
     return player_choice
 
 
+def player_won():
+    print(colored('Player has won!', 'green'))
+
+
+def cpu_won():
+    print(colored('CPU has won!', 'red'))
+
+
 def check_win(p_choice, cpu_choice):
     if p_choice == cpu_choice:
-        print("It's a draw!")
+        print(colored("It's a draw!", 'yellow'))
     elif p_choice == 'rock':
         if cpu_choice == 'scissors':
-            print("Player has won!")
+            player_won()
         else:
-            print("CPU has won!")
+            cpu_won()
     elif p_choice == 'paper':
         if cpu_choice == 'rock':
-            print("Player has won!")
+            player_won()
         else:
-            print("CPU has won!")
+            cpu_won()
     elif p_choice == 'scissors':
         if cpu_choice == 'paper':
-            print("Player has won!")
+            player_won()
         else:
-            print("CPU has won!")
+            cpu_won()
     else:
         print("Invalid input!")
 
